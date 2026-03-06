@@ -1,128 +1,278 @@
+
 # SQL Data Warehouse Project
 
 ## Overview
 
-This project is a comprehensive SQL-based data warehouse solution designed to centralize, integrate, and analyze large volumes of data from from csv files of on aorganisation . The data warehouse serves as a foundation for business intelligence, reporting, and data analytics, enabling organizations to make data-driven decisions.
+This project implements a **SQL-based Data Warehouse using PostgreSQL** designed to integrate, clean, and analyze organizational data collected from multiple CSV files.
 
-## Features
+The goal of this project is to demonstrate **core data engineering and data warehousing concepts using SQL**, including:
 
-- **Data Integration**: ETL (Extract, Transform, Load) processes to consolidate data from multiple sources
-- **Scalable Architecture**: Designed to handle growing data volumes and complex queries
-- **SQL Optimization**: Efficient query performance with indexing and partitioning strategies
-- **Data Quality**: Built-in data validation and cleansing mechanisms
-- **Analytics Ready**: Structured for easy integration with BI tools and analytics platforms
+* Data ingestion from CSV files
+* Data cleaning and transformation
+* Layered data architecture (Bronze → Silver → Gold)
+* Star schema data modeling
+* Data quality validation
 
-## Technologies Used
+The data warehouse provides a structured foundation for **analytics, reporting, and business intelligence**.
 
-- **Database**: SQL Server / PostgreSQL / MySQL (specify based on implementation)
-- **ETL Tools**: SQL Server Integration Services (SSIS) / Apache Airflow / Custom Python scripts
-- **Programming Languages**: SQL, Python
-- **Version Control**: Git
-- **Documentation**: Markdown
+---
 
-## Data Sources
-
-The data warehouse integrates data from the following sources:
-- Flat files (CSV)
+# Architecture
  <img width="2888" height="3608" alt="image" src="https://github.com/user-attachments/assets/681275a0-9133-437a-853f-5aa49e4b89b8" />
 
 
-## Integration model
-<img width="3524" height="2104" alt="image" src="https://github.com/user-attachments/assets/bcb8ff1d-867c-4759-a16e-608cc444e842" />
+The project follows a **modern layered data warehouse architecture**.
 
-## Schema Design
+```
+CSV Files
+   ↓
+Bronze Layer (Raw Data)
+   ↓
+Silver Layer (Cleaned & Standardized Data)
+   ↓
+Gold Layer (Analytics / Star Schema)
+```
 
-The data warehouse follows a star schema design with:
+### Bronze Layer
 
-- **Fact Tables**: Central tables containing quantitative data for analysis
-- **Dimension Tables**: Descriptive attributes providing context for facts
-- **Slowly Changing Dimensions**: Handling historical data changes
+* Stores **raw data loaded directly from CSV files**
+* No transformations applied
+* Acts as the **source of truth**
 
-- <img width="3352" height="2092" alt="image" src="https://github.com/user-attachments/assets/f92c3a18-0cf0-41e3-a701-2031ba5d87a3" />
+### Silver Layer
+
+* Performs **data cleaning and validation**
+* Standardizes formats
+* Handles missing or incorrect values
+* Applies business rules
+
+### Gold Layer
+
+* Implements **analytics-ready data models**
+* Uses **Star Schema**
+* Designed for reporting and analysis
+
+---
+
+# Data Pipeline
+
+The project implements a **SQL-based ETL pipeline**.
+
+### 1. Extract
+
+Raw data is collected from:
+
+* CSV files exported from source systems.
+
+### 2. Transform
+
+Data is cleaned and standardized using SQL transformations.
+
+Examples:
+
+* Fixing invalid date formats
+* Removing unwanted characters
+* Handling NULL values
+* Correcting negative values
+* Standardizing categorical values
+
+### 3. Load
+
+Cleaned data is inserted into **Silver tables**, which are then used to build the **Gold analytical schema**.
+
+---
+<img width="2284" height="1608" alt="image" src="https://github.com/user-attachments/assets/826aa217-a256-42ae-8b40-53dff86ab09b" />
 
 
-## Setup Instructions
+# Data Model
 
-1. **Prerequisites**
-   - SQL Server/PostgreSQL/MySQL installed
-   - Python 3.8+ (if using Python ETL scripts)
-   - Git for version control
+The Gold layer uses a **Star Schema** design.
 
-2. **Installation**
-   ```bash
-   git clone https://github.com/Yaswanth332/Sql-DataWareHouse-Project-.git
-   cd Sql-DataWareHouse-Project-
-   ```
+```
+                dim_date
+                   |
+dim_customer ---- fact_sales ---- dim_product
+                   |
+                dim_region
+```
+<img width="3352" height="2092" alt="image" src="https://github.com/user-attachments/assets/5e9a3661-9481-48d5-a13d-4d5552b8fd59" />
 
-3. **Database Setup**
-   - Create a new database for the data warehouse
-   - Run the DDL scripts in the `schema/` directory to create tables
-   - Execute the initial data load scripts
 
-4. **ETL Execution**
-   - Configure connection strings in `config/etl_config.json`
-   - Run ETL pipelines using the provided scripts or scheduled jobs
+### Fact Table
 
-## Usage
+Fact tables store **business metrics** used for analysis.
 
-### Querying the Data Warehouse
+
+### Dimension Tables
+
+Dimension tables store **descriptive attributes** that provide context.
+
+Example:
+
+**dim_customer**
+
+
+**dim_product**
+
+
+These allow analysis such as:
+
+* Sales by region
+* Sales by product category
+* Sales trends over time
+
+---
+
+# Data Quality Checks
+
+The project includes several **data validation checks** to ensure data reliability.
+
+Examples of implemented checks:
+
+* Detecting NULL or missing values
+* Identifying invalid date formats
+* Removing unwanted characters
+* Handling negative numeric values
+* Checking data consistency between fields
+
+Example validation query:
 
 ```sql
--- Example query to analyze sales by region
+SELECT *
+FROM silver.crm_sales_details
+WHERE sls_quantity < 0
+   OR sls_price < 0;
+```
+
+These checks help maintain **clean and reliable analytical data**.
+
+---
+
+# Technologies Used
+
+| Technology | Purpose                          |
+| ---------- | -------------------------------- |
+| PostgreSQL | Data warehouse database          |
+| SQL        | Data transformation and modeling |
+| Git        | Version control                  |
+| Markdown   | Documentation                    |
+
+---
+
+# Data Sources
+
+The warehouse integrates data from:
+
+* Flat files (CSV)
+
+Example datasets:
+
+* Customer data
+* Product data
+* Sales transactions
+
+---
+
+# Setup Instructions
+
+## 1. Prerequisites
+
+Install:
+
+* PostgreSQL
+* Git
+
+---
+
+## 2. Clone the Repository
+
+```bash
+git clone https://github.com/Yaswanth332/Sql-DataWareHouse-Project-.git
+cd Sql-DataWareHouse-Project-
+```
+
+---
+
+## 3. Database Setup
+
+1. Create a new PostgreSQL database
+2. Run the DDL scripts to create schemas and tables
+3. Load CSV files into Bronze tables
+
+---
+
+## 4. Run Data Transformation Scripts
+
+Execute the SQL scripts that transform data from:
+
+```
+Bronze → Silver → Gold
+call bronze.load_bronze()
+call silver.load_silve()
+```
+
+---
+
+# Example Analytical Query
+
+Example: **Total sales by region**
+
+```sql
 SELECT
     d.region_name,
-    SUM(f.sales_amount) as total_sales,
-    COUNT(f.transaction_id) as transaction_count
+    SUM(f.sales_amount) AS total_sales
 FROM fact_sales f
-JOIN dim_region d ON f.region_key = d.region_key
-WHERE f.transaction_date >= '2023-01-01'
+JOIN dim_region d
+ON f.region_key = d.region_key
 GROUP BY d.region_name
 ORDER BY total_sales DESC;
 ```
 
-### Running ETL Processes
+---
 
-```bash
-python etl_pipeline.py --source sales_db --target warehouse
-```
-
-## Project Structure
+# Project Structure
 
 ```
-Sql-DataWareHouse-Project-/
-├── schema/
-│   ├── ddl_scripts.sql
-│   └── constraints.sql
-├── etl/
-│   ├── extract.py
-│   ├── transform.py
-│   └── load.py
-├── queries/
-│   ├── reports.sql
-│   └── analytics.sql
-├── config/
-│   └── etl_config.json
-├── data/
-│   ├── sample_data.csv
-│   └── raw_data/
-├── tests/
-│   └── test_etl.py
+Sql-DataWareHouse-Project
+│
+├── database
+├── docs
+├── draw_io
+├── scripts
+│   ├── bronze
+│   ├── silver
+│   ├── gold
+│   ├── init_database.sql
+│
+├── test
+├── LICENSE
 └── README.md
 ```
 
-## Contributing
+---
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/new-feature`)
-3. Commit your changes (`git commit -am 'Add new feature'`)
-4. Push to the branch (`git push origin feature/new-feature`)
-5. Create a Pull Request
+# Future Improvements
 
-## License
+Possible improvements for this project include:
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+* Adding workflow orchestration (Airflow)
+* Implementing incremental data loading
+* Integrating BI tools such as Power BI or Tableau
+* Adding automated data quality monitoring
 
-## Contact
+---
 
-For questions or support, please contact the project maintainer at yaswanthkrishnajonnalagadda@gmail.com.
+# License
+
+This project is licensed under the **MIT License**.
+
+---
+
+# Contact
+
+**Yaswanth Krishna Jonnalagadda**
+
+Email:
+[yaswanthkrishnajonnalagadda@gmail.com](mailto:yaswanthkrishnajonnalagadda@gmail.com)
+
 
