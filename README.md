@@ -24,6 +24,8 @@ This project is a comprehensive SQL-based data warehouse solution designed to ce
 
 The data warehouse integrates data from the following sources:
 - Flat files (CSV)
+  <img width="184" height="208" alt="image" src="https://github.com/user-attachments/assets/144faf00-258e-484e-8dfb-ed091f9ab0d6" />
+
 
 
 ## Schema Design
