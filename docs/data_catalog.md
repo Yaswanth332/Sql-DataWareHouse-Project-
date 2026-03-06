@@ -127,5 +127,65 @@ and  <b>fact tables</b> for specif bussiness metrics.
     </tbody>
   </table></li>
 </ul>
+<hr>
+<h2>3. gold .fact_sales</h2>
+<ul>
+  <li><b> Purpose:</b> Stores sales transaction facts linking customers and products with sales metrics </li>
+  <li><b> Columns:</b>
+  <table>
+    <thead>
+        <th>Columns_name</th>
+        <th>Data types</th>
+        <th>Description</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>order_number</td>
+            <td>VARCHAR</td>
+            <td>Unique order identifier</td>
+        </tr>
+        <tr>
+            <td><b>fk1</b></td>
+            <td>INT</td>
+            <td>Foreign key linking to product_key in dim_products</td>
+        </tr>
+        <tr>
+            <td><b>fk2</b></td>
+            <td>INT</td>
+            <td>Foreign key linking to customer_key in dim_customers</td>
+        </tr>
+        <tr>
+            <td>order_date</td>
+            <td>DATE</td>
+            <td>Date when the order was placed</td>
+        </tr>
+        <tr>
+            <td>shipping_date</td>
+            <td>DATE</td>
+            <td>Date when the order was shipped</td>
+        </tr>
+        <tr>
+            <td>due_date</td>
+            <td>DATE</td>
+            <td>Due date for the order</td>
+        </tr>
+        <tr>
+            <td>sales_amount</td>
+            <td>DECIMAL</td>
+            <td>Total sales amount for the order</td>
+        </tr>
+        <tr>
+            <td>qunatity</td>
+            <td>INT</td>
+            <td>Quantity of products in the order</td>
+        </tr>
+        <tr>
+            <td>price</td>
+            <td>DECIMAL</td>
+            <td>Price per unit</td>
+        </tr>
+    </tbody>
+  </table></li>
+</ul>
 
 
