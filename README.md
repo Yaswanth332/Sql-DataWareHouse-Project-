@@ -28,7 +28,7 @@ The data warehouse integrates data from the following sources:
 
 
 ## Integration model
-<img width="3352" height="2092" alt="image" src="https://github.com/user-attachments/assets/d4fbc949-c5a8-4450-80c4-baaa82fac339" />
+<img width="3524" height="2104" alt="image" src="https://github.com/user-attachments/assets/bcb8ff1d-867c-4759-a16e-608cc444e842" />
 
 ## Schema Design
 
