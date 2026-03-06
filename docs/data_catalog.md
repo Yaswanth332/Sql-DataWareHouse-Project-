@@ -5,4 +5,24 @@ and  <b>fact tables</b> for specif bussiness metrics.
 <h2>1. gold .dim_customers</h2>
 <ul>
   <li><b> Purpose:</b> Stores customers details enriched with demographic and geographic data </li>
+  <li><b> Columns:</b>
+  <table>
+    <th>
+    Columns_name</th>
+    <th>
+    Data types
+    </th>
+    <th>
+        Description
+    </th>
+    <td>
+        customer_key
+    </td>
+    <td>
+        INT
+    </td>
+    <td>
+        Surrigate key uniquely identify the each customer record in the dimesion table 
+    </td>
+  </table></li>
 </ul>
