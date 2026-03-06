@@ -27,6 +27,8 @@ The data warehouse integrates data from the following sources:
  <img width="2888" height="3608" alt="image" src="https://github.com/user-attachments/assets/681275a0-9133-437a-853f-5aa49e4b89b8" />
 
 
+## Integration model
+<img width="3352" height="2092" alt="image" src="https://github.com/user-attachments/assets/d4fbc949-c5a8-4450-80c4-baaa82fac339" />
 
 ## Schema Design
 
@@ -35,6 +37,9 @@ The data warehouse follows a star schema design with:
 - **Fact Tables**: Central tables containing quantitative data for analysis
 - **Dimension Tables**: Descriptive attributes providing context for facts
 - **Slowly Changing Dimensions**: Handling historical data changes
+
+- <img width="3352" height="2092" alt="image" src="https://github.com/user-attachments/assets/f92c3a18-0cf0-41e3-a701-2031ba5d87a3" />
+
 
 ## Setup Instructions
 
