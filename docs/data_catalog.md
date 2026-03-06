@@ -7,7 +7,8 @@ and  <b>fact tables</b> for specif bussiness metrics.
   <li><b> Purpose:</b> Stores customers details enriched with demographic and geographic data </li>
   <li><b> Columns:</b>
   <table>
-    <th>
+    <thead>
+        <th>
     Columns_name</th>
     <th>
     Data types
@@ -15,7 +16,9 @@ and  <b>fact tables</b> for specif bussiness metrics.
     <th>
         Description
     </th>
-    <td>
+    </thead>
+    <tbody>
+<td>
         customer_key
     </td>
     <td>
@@ -24,5 +27,7 @@ and  <b>fact tables</b> for specif bussiness metrics.
     <td>
         Surrigate key uniquely identify the each customer record in the dimesion table 
     </td>
+    </tbody>
+    
   </table></li>
 </ul>
