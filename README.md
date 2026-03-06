@@ -45,12 +45,15 @@ Gold Layer (Analytics / Star Schema)
 * Standardizes formats
 * Handles missing or incorrect values
 * Applies business rules
+  <img width="3524" height="2044" alt="image" src="https://github.com/user-attachments/assets/c181408a-87ed-4776-8986-418761a68c06" />
+
 
 ### Gold Layer
 
 * Implements **analytics-ready data models**
 * Uses **Star Schema**
 * Designed for reporting and analysis
+<img width="3524" height="2104" alt="image" src="https://github.com/user-attachments/assets/0422810a-4437-4311-985d-49e5401418a9" />
 
 ---
 
