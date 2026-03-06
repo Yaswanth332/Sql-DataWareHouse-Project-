@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a comprehensive SQL-based data warehouse solution designed to centralize, integrate, and analyze large volumes of data from various sources. The data warehouse serves as a foundation for business intelligence, reporting, and data analytics, enabling organizations to make data-driven decisions.
+This project is a comprehensive SQL-based data warehouse solution designed to centralize, integrate, and analyze large volumes of data from from csv files of on aorganisation . The data warehouse serves as a foundation for business intelligence, reporting, and data analytics, enabling organizations to make data-driven decisions.
 
 ## Features
 
@@ -10,7 +10,6 @@ This project is a comprehensive SQL-based data warehouse solution designed to ce
 - **Scalable Architecture**: Designed to handle growing data volumes and complex queries
 - **SQL Optimization**: Efficient query performance with indexing and partitioning strategies
 - **Data Quality**: Built-in data validation and cleansing mechanisms
-- **Security**: Role-based access control and data encryption
 - **Analytics Ready**: Structured for easy integration with BI tools and analytics platforms
 
 ## Technologies Used
@@ -24,12 +23,8 @@ This project is a comprehensive SQL-based data warehouse solution designed to ce
 ## Data Sources
 
 The data warehouse integrates data from the following sources:
+- Flat files (CSV)
 
-- Operational databases (OLTP systems)
-- External APIs and web services
-- Flat files (CSV, Excel)
-- Legacy systems
-- Third-party data providers
 
 ## Schema Design
 
@@ -122,8 +117,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-For questions or support, please contact the project maintainer at [your-email@example.com].
+For questions or support, please contact the project maintainer at yaswanthkrishnajonnalagadda@gmail.com.
 
----
-
-*This README provides a template structure. Please customize the content based on your specific implementation details.*
